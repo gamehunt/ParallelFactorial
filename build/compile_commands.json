@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/hdd/Projects/Labs/PC/1/build",
-  "command": "/usr/bin/c++    -o CMakeFiles/program.dir/main.cpp.o -c /hdd/Projects/Labs/PC/1/main.cpp",
-  "file": "/hdd/Projects/Labs/PC/1/main.cpp",
-  "output": "CMakeFiles/program.dir/main.cpp.o"
-}
-]
