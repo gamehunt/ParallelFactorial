@@ -1,0 +1,3 @@
+/hdd/Projects/Labs/PC/1/build/CMakeFiles/program.dir
+/hdd/Projects/Labs/PC/1/build/CMakeFiles/edit_cache.dir
+/hdd/Projects/Labs/PC/1/build/CMakeFiles/rebuild_cache.dir
