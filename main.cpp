@@ -11,6 +11,15 @@
 
 typedef long long ll;
 
+#define PERF_START(id) \
+    auto start_##id = std::chrono::high_resolution_clock::now();
+
+#define PERF_END(id) \
+    auto end_##id = std::chrono::high_resolution_clock::now();
+
+#define PERF_RESULT(id) \
+    std::chrono::duration_cast<std::chrono::microseconds>(end_##id - start_##id).count()
+
 ll factorial_serial(int n) {
     if(n < 0) {
         throw std::invalid_argument("n < 0");
@@ -91,16 +100,16 @@ int main(int argc, const char** argv) {
 
     assert(serial == parallel);
 
-    auto start = std::chrono::high_resolution_clock::now();
+    PERF_START(serial)
     std::cout << "SERIAL: " << factorial_serial(n) << std::endl;
-    auto stop = std::chrono::high_resolution_clock::now();
-    auto dur = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "Took: " << dur.count() << "mcs" << std::endl;
+    PERF_END(serial)
+    auto dur = PERF_RESULT(serial);
+    std::cout << "Took: " << dur << "mcs" << std::endl;
 
-    start = std::chrono::high_resolution_clock::now();
+    PERF_START(par)
     std::cout << "PARALLEL: " << factorial_parallel(n, tn) << std::endl;
-    stop = std::chrono::high_resolution_clock::now();
-    dur = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "Took: " << dur.count() << "mcs" << std::endl;
+    PERF_END(par)
+    dur = PERF_RESULT(par);
+    std::cout << "Took: " << dur << "mcs" << std::endl;
     return 0;
 }
